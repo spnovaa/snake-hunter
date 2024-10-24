@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.h-spacer {
+    padding: 20px 0;
+}
+
+html {
+    height: 100%;
+    background-color: #f9fbe7;
+}
+
+body {
+    font-family: Arial, serif;
+    margin: 0;
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    background: #827717;
+    color: white;
+    font-family: cursive;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px;
+    text-align: center;
+    background: #AFB42B;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-el{
+    padding: 0 50px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.title {
+    font-size: large;
+    font-weight: bold;
+    padding: 5px 5px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    height: 99%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.intro-side {
+    display: flex;
+    flex: 40%;
+    align-items: center;
+    height: 80vh;
+    background: radial-gradient(circle, rgba(220,231,117,1) 0%, rgba(249,251,231,1) 50%, #f9fbe7 100%);
+}
+
+@media (max-width: 800px) {
+    .intro-side {
+        display: none;
+    }
+}
+
+.intro-main {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 60%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+img {
+    max-width: 100%;
+}
+
+.intro-img {
+    object-fit: contain;
+}
+
+.intro-logo {
+    margin-bottom: 15px;
+    height: 100px;
+    width: 100px;
+    background: radial-gradient(circle, rgba(220,231,117,1) 0%, rgba(249,251,231,1) 50%, #f9fbe7 100%);
+}
+
+.intro-logo:hover {
+    transform: scale(1.2);
+}
+
+.xs-logo {
+    width: 20px;
+    height: 20px;
+}
