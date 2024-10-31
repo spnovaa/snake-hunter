@@ -2,9 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Snake Hunter</title>
+    <link rel="stylesheet" href="../../src/styles/app.css">
+    <script src="../../src/js/app.js"></script>
 </head>
 <body>
+<div id="index_header" class="header">
+    Snake Hunter
+</div>
+<div class="center-div">
+    <div id="landing_menu" class="center-div tv">
+        <div class="row center-text">
+            <h1>SETTINGS</h1>
+        </div>
+        <div id="landing_level_radio" class="my-2">
+            <h2>Level</h2>
+            <label for="radio_level_easy">Easy</label>
+            <input id="radio_level_easy" checked value="1" type="radio" name="radio-level" class="mr-2">
 
+            <label for="radio_level_hard">Hard</label>
+            <input id="radio_level_hard" value="2" type="radio" name="radio-level">
+        </div>
+        <div class="my-2 row">
+            <label class="h2 mr-2" for="landing_score">High Score:</label>
+            <div id="landing_score" class="score "> 254</div>
+        </div>
+        <div id="landing_start">
+            <button onclick="start()" id="landing_start_button" class="button-start"> Start!</button>
+        </div>
+    </div>
+</div>
+<div id="index_footer" class="footer">
+    <div class="footer-el">
+        Powered By
+        <a href="mailto:spnova@aut.ac.ir"> SpNova </a>
+    </div>
+    <div class="footer-el">
+        <a href="https://github.com/spnovaa/snake-hunter">
+            <img class="xs-logo" src="../assets/git/github.png" alt="git">
+        </a>
+    </div>
+</div>
 </body>
 </html>
