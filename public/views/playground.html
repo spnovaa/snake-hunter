@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/src/js/app.js"></script>
+    <script src="../../src/js/app.js"></script>
+    <link rel="stylesheet" href="../../src/styles/app.css">
 </head>
-<body>
-    <div>
-        Hello World!
+<body onload="startGame()">
+<div class="row" id="game_info">
+    <div class="col-3">
+        <div class="pg-h-b">Level:</div>
+        <div class="pg-t">1</div>
     </div>
+    <div class="col-3">
+        <div class="pg-h-b mr-1">Time:</div>
+        <div id="timer"></div>
+    </div>
+    <div class="col-3">
+        <button class="pause-play" id="pause_btn" onclick="pauseAndPlay()">||</button>
+    </div>
+    <div class="col-3">
+        <div class="pg-h-b">Score:</div>
+        <div id="gameplay_score" class="pg-t">123</div>
+    </div>
+</div>
+<div id="playground_container" class="playground-container">
+    <canvas id="playground"></canvas>
+</div>
+<script src="../../src/js/game.js"></script>
 </body>
-<script>
-    window.onload = function() {
-        resize(400, 600);
-    };
-</script>
 </html>

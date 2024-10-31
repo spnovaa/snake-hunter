@@ -83,6 +83,20 @@ body {
     align-content: center;
 }
 
+.pg-h-b {
+    font-weight: bold;
+    font-size: small;
+    margin: 0;
+    padding: 0;
+    color: green;
+}
+
+.pg-t {
+    font-size: small;
+    font-weight: normal;
+    margin: 0 2px;
+}
+
 .intro-side {
     display: flex;
     flex: 40%;
@@ -111,6 +125,10 @@ body {
     height: 400px
 }
 
+.mr-1 {
+    margin-right: 10px;
+}
+
 .mr-2 {
     margin-right: 20px;
 }
@@ -128,6 +146,23 @@ body {
 .h2 {
     font-weight: bold;
     font-size: large;
+}
+
+.col-3 {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+}
+
+#game_info {
+    padding: 5px 0;
+    height: 30px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0 0 0 2px, rgba(6, 24, 44, 0.65) 0 4px 6px -1px, rgba(255, 255, 255, 0.08) 0 1px 0 inset;
+}
+
+#playground_container {
+    height: 580px;
+    background-color: #040e0f;
 }
 
 .intro-main {
