@@ -14,12 +14,15 @@ function rand(min, max) {
 
 var playground = {
     onPause: false,
+    speed: 1,
     score: 0,
-    time: 60,
+    time: 10,
     foods: [],
     snakes: [],
     canvas: document.getElementById("playground"),
     start: function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        this.speed = urlParams.get('l');
         this.canvas.width = GROUND_WIDTH;
         this.canvas.height = GROUND_HEIGHT;
         this.gameInterval = setInterval(updateGameArea, 20);
@@ -35,17 +38,41 @@ var playground = {
         clearInterval(this.gameInterval);
         clearInterval(this.snakeGeneratorInterval);
         clearInterval(this.clockInterval);
+        updateBestRecords();
     },
     clear: function () {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
     update: function () {
-        if (playground.time === 0 || playground.foods.length === 0)
-            return;
+        if (checkFinish())
+            return
         updateFoods();
         updateSnakes();
         updateScore();
     }
+}
+
+function updateBestRecords() {
+    let level = playground.speed
+    let isEasy = Number(level) === 1;
+    let prev = JSON.parse(localStorage.getItem('snake-hunter-record'));
+    if (prev) {
+        if (playground.score > prev[level])
+            prev[level] = playground.score;
+        localStorage.removeItem('snake-hunter-record');
+    } else
+        prev = {'1': isEasy ? level : '0', '2': isEasy ? '0' : level}
+
+    localStorage.setItem('snake-hunter-record', JSON.stringify(prev));
+}
+
+function checkFinish() {
+    let finished = playground.time === 0 || playground.foods.length === 0;
+    if (finished) {
+        playground.stop()
+        return true;
+    }
+    return false;
 }
 
 function updateFoods() {
@@ -145,8 +172,8 @@ function Snake() {
 
         this.ctx.save();
         this.angle = getDirectionAngle(this.x, this.y, x, y)
-        const dx = Math.cos(this.angle * (Math.PI / 180));
-        const dy = Math.sin(this.angle * (Math.PI / 180));
+        const dx = Math.cos(this.angle * (Math.PI / 180)) * playground.speed;
+        const dy = Math.sin(this.angle * (Math.PI / 180)) * playground.speed;
         if (!playground.onPause) {
             this.x += dx;
             this.y += dy;

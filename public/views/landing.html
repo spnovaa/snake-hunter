@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../src/styles/app.css">
     <script src="../../src/js/app.js"></script>
 </head>
-<body>
+<body onfocus="updateBestScoreLabel()" onload="updateBestScoreLabel()">
 <div id="index_header" class="header">
     Snake Hunter
 </div>
@@ -18,10 +18,23 @@
         <div id="landing_level_radio" class="my-2">
             <h2>Level</h2>
             <label for="radio_level_easy">Easy</label>
-            <input id="radio_level_easy" checked value="1" type="radio" name="radio-level" class="mr-2">
+            <input
+                    id="radio_level_easy"
+                    checked value="1"
+                    type="radio"
+                    name="radio-level"
+                    class="mr-2"
+                    onchange="updateBestScoreLabel()"
+            >
 
             <label for="radio_level_hard">Hard</label>
-            <input id="radio_level_hard" value="2" type="radio" name="radio-level">
+            <input
+                    id="radio_level_hard"
+                    value="2"
+                    type="radio"
+                    name="radio-level"
+                    onchange="updateBestScoreLabel()"
+            >
         </div>
         <div class="my-2 row">
             <label class="h2 mr-2" for="landing_score">High Score:</label>
