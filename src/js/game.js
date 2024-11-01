@@ -16,7 +16,7 @@ var playground = {
     onPause: false,
     speed: 1,
     score: 0,
-    time: 10,
+    time: 60,
     foods: [],
     snakes: [],
     canvas: document.getElementById("playground"),
@@ -45,7 +45,7 @@ var playground = {
     },
     update: function () {
         if (checkFinish())
-            return
+            window.close();
         updateFoods();
         updateSnakes();
         updateScore();
@@ -69,7 +69,11 @@ function updateBestRecords() {
 function checkFinish() {
     let finished = playground.time === 0 || playground.foods.length === 0;
     if (finished) {
-        playground.stop()
+        playground.stop();
+        if (playground.time === 0)
+            alert('Time Over!');
+        else
+            alert('Snakes Won!')
         return true;
     }
     return false;
@@ -94,8 +98,6 @@ function updateScore() {
 function decrementTime() {
     if (playground.time !== 0 && playground.foods.length !== 0 && !playground.onPause)
         playground.time -= 1;
-    else
-        playground.stop();
 
     document.getElementById('timer').innerHTML = playground.time;
 }
@@ -134,14 +136,13 @@ function Snake() {
     this.x = rand(0, 400);
     this.y = 0;
     this.ctx = playground.context;
-    this.angle = 90;
+    this.angle = 0;
+    this.trembler = 5;
 
     this.ctx.save();
-    this.ctx.fillStyle = 'green';
     this.ctx.fillRect(this.x, this.y, this.width - 5, this.height);
     this.ctx.beginPath();
     this.ctx.arc(this.x + 2.5, this.y + 20, 4, 0, 2 * Math.PI);
-    this.ctx.fillStyle = "green";
     this.ctx.fill();
     this.ctx.restore();
 
@@ -164,7 +165,6 @@ function Snake() {
                 index = i;
             }
         }
-
         if (distance < SNAKE_HEIGHT) {
             playground.foods.splice(index, 1);
             return;
@@ -179,14 +179,26 @@ function Snake() {
             this.y += dy;
         }
         this.ctx.beginPath();
-        this.ctx.fillStyle = 'green';
-        this.ctx.fillRect(this.x, this.y, this.width - 5, this.height);
-        // this.ctx.beginPath();
-        //
-        // this.ctx.arc(this.x + 2.5, this.y + 20, 4, 0, 2 * Math.PI);
-        // this.ctx.fillStyle = "green";
-        // this.ctx.fill();
+        this.ctx.translate(this.x, this.y)
+        this.ctx.rotate(this.angle * Math.PI / 180);
+        this.trembler += rand(-10, 10) / 6;
+        if (Math.abs(this.trembler) > 15)
+            this.trembler = 0;
+
+        let head = {x: this.height, y: 0};
+        let cp1 = {x: this.height / 2, y: this.trembler};
+        let cp2 = {x: this.height / 2, y: -this.trembler};
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, 0);
+        this.ctx.strokeStyle = 'green';
+        this.ctx.lineWidth = 2;
+        this.ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, head.x, head.y);
+        this.ctx.stroke();
+        this.ctx.beginPath();
+
+        this.ctx.translate(0, 0);
         this.ctx.restore();
+
     }
 }
 
@@ -198,9 +210,7 @@ function Food(x, y) {
         this.ctx.save();
         this.ctx.fillStyle = 'yellow';
         this.ctx.fillRect(this.x, this.y, FOOD_WIDTH, FOOD_HEIGHT);
-        this.ctx.fillStyle = "green";
-        this.ctx.fill();
-        this.ctx.stroke();
+        this.ctx.restore();
     }
 }
 
@@ -214,7 +224,8 @@ function getDirectionAngle(xs, hs, xf, yf) {
 }
 
 function generateSnake() {
-    playground.snakes.push(new Snake());
+    if (!playground.onPause)
+        playground.snakes.push(new Snake());
 }
 
 function generateFood() {
@@ -228,4 +239,8 @@ function updateGameArea() {
 
 function pauseAndPlay() {
     playground.onPause = !playground.onPause;
+    if (playground.onPause)
+        document.getElementById('pause_btn').innerHTML = "&#9658;"
+    else
+        document.getElementById('pause_btn').innerHTML = "&#9616;&#9616;"
 }

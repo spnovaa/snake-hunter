@@ -119,6 +119,14 @@ body {
     height: 80%;
 }
 
+.pause-play {
+    font-family: serif;
+    background-color: transparent;
+    border: none;
+    width: 50%;
+    margin: 0 5px;
+}
+
 
 #landing_menu {
     width: 300px;
@@ -150,6 +158,30 @@ body {
 
 .col-3 {
     width: 25%;
+    display: flex;
+    flex-direction: row;
+}
+
+.col-1 {
+    width: 8.3333333%;
+    display: flex;
+    flex-direction: row;
+}
+
+.col-2 {
+    width: 16.6666666%;
+    display: flex;
+    flex-direction: row;
+}
+
+.col-4 {
+    width: 33.3333333%;
+    display: flex;
+    flex-direction: row;
+}
+
+.col-8 {
+    width: 66.6666666%;
     display: flex;
     flex-direction: row;
 }
