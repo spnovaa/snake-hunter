@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="../../src/js/app.js"></script>
-    <link rel="stylesheet" href="../../src/styles/app.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Hunter — Play</title>
+  <link rel="stylesheet" href="../../src/styles/app.css" />
 </head>
-<body onload="startGame()">
-<div class="row" id="game_info">
-    <div class="col-2">
-        <div class="pg-h-b">Level:</div>
-        <div class="pg-t">1</div>
+<body>
+
+  <div class="game-hud" id="game-hud" role="status" aria-live="polite">
+    <div class="game-hud__section">
+      <span class="game-hud__label">Level:&nbsp;</span>
+      <span class="game-hud__value" id="hud-level">—</span>
     </div>
-    <div class="col-2">
-        <div class="pg-h-b mr-1">Time:</div>
-        <div id="timer"></div>
+
+    <div class="game-hud__section">
+      <span class="game-hud__label">Time:&nbsp;</span>
+      <span class="game-hud__value" id="timer">60</span>
     </div>
-    <div class="col-4">
-        <button class="pause-play" id="pause_btn" onclick="pauseAndPlay()">&#9616;&#9616;</button>
+
+    <div class="game-hud__section game-hud__section--center">
+      <button class="btn-pause" id="pause-btn" aria-label="Pause game">&#9616;&#9616;</button>
     </div>
-    <div class="col-4">
-        <div class="pg-h-b">Score:</div>
-        <div id="gameplay_score" class="pg-t">123</div>
+
+    <div class="game-hud__section">
+      <span class="game-hud__label">Score:&nbsp;</span>
+      <span class="game-hud__value" id="gameplay-score">0</span>
     </div>
-</div>
-<div id="playground_container" class="playground-container">
+  </div>
+
+  <div class="canvas-container" id="canvas-container">
     <canvas id="playground"></canvas>
-</div>
-<script src="../../src/js/game.js"></script>
+  </div>
+
+  <script type="module" src="../../src/js/main.js"></script>
 </body>
 </html>

@@ -1,52 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Snake Hunter</title>
-    <link rel="stylesheet" href="src/styles/app.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Hunter</title>
+  <link rel="stylesheet" href="src/styles/app.css" />
 </head>
 <body>
 
-<div id="index_header" class="header">
-    Snake Hunter
-</div>
+  <header class="site-header">Snake Hunter</header>
 
-<div id="index_context" class="row">
-    <div id="leftmost_intro" class="intro-main">
-        <a href="./public/views/landing.html">
-            <img src="./public/assets/swords/sword.png" alt="Fight!" class="intro-logo">
-        </a>
-        <a href="./public/views/landing.html">
-            Fight!
-        </a>
+  <main class="home-layout">
+    <section class="home-layout__main" aria-label="Navigation">
+      <a href="./public/views/landing.html" aria-label="Play the game">
+        <img src="./public/assets/swords/sword.png" alt="Crossed swords" class="nav-logo" />
+      </a>
+      <a href="./public/views/landing.html">Fight!</a>
 
-        <div class="h-spacer"></div>
+      <div class="spacer"></div>
 
-        <a href="#">
-            <img src="./public/assets/doc/book.png" alt="Instructions!" class="intro-logo">
-        </a>
-        <a href="#">
-            Train!
-        </a>
-        <div class="h-spacer"></div>
-    </div>
-    <div id="rightmost_snake" class="intro-side">
-        <img src="./public/assets/snakes/logo.png" alt="logo" class="intro-img">
-    </div>
-</div>
+      <a href="#" aria-label="View instructions">
+        <img src="./public/assets/doc/book.png" alt="Book" class="nav-logo" />
+      </a>
+      <a href="#">Train!</a>
 
-<div id="index_footer" class="footer">
-    <div class="footer-el">
-        Powered By
-        <a href="mailto:spnova@aut.ac.ir"> SpNova </a>
+      <div class="spacer"></div>
+    </section>
+
+    <aside class="home-layout__sidebar" aria-hidden="true">
+      <img src="./public/assets/snakes/logo.png" alt="Snake Hunter logo" class="home-layout__sidebar-img" />
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__item">
+      Powered by
+      <a href="mailto:spnova@aut.ac.ir">SpNova</a>
     </div>
-    <div class="footer-el">
-        <a href="https://github.com/spnovaa/snake-hunter">
-            <img class="xs-logo" src="./public/assets/git/github.png" alt="git">
-        </a>
+    <div class="site-footer__item">
+      <a href="https://github.com/spnovaa/snake-hunter" aria-label="GitHub repository">
+        <img class="icon-xs" src="./public/assets/git/github.png" alt="GitHub" />
+      </a>
     </div>
-</div>
+  </footer>
 
 </body>
 </html>
